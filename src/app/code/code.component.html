@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row vh-100">
+        <div class="d-flex flex-column justify-content-center align-items-center ">
+            <div>
+                <h3 class="p-5 w-75 m-auto text-center"> Please Enter The code You Recived On Your Phone# </h3>
+            </div>
+            <div>
+                <ng-otp-input #code (onInputChange)="onOtpChange($event)" [config]="{length:6,allowNumbersOnly:true}">
+                </ng-otp-input>
+            </div>
+            <div>
+                <button class="btn btn-success mt-3 " (click)="checkCode()"> Verify Code</button>
+            </div>
+        
+            <div *ngIf="Error" class="alert alert-danger">
+                <p class="text-muted">{{Error}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+

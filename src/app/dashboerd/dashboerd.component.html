@@ -1,0 +1,71 @@
+<div class="container">
+    <div class="row p-2">
+     <div class="col-md-10" > 
+        <h2> Welcome To Admin Dashboard </h2>
+        </div>
+        <div class="col-md-2 text-end" >
+            <button class="btn btn-danger m-2" (click)="Out()" > Logout </button>   
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 d-flex flex-column align-items-center justify-content-center">
+           <div class="d-flex flex-column">
+            <label for="" class="fw-bold"> Ad url </label>
+            <input type="text" name="" id="" class="form-control mt-1" #url [(ngModel)]='urlAd'>
+            <div class="d-flex mt-1  align-items-center" >
+                <input type="radio" id="image" name="ad-describe" [(ngModel)]='adType' value="image"   class="mt-1">
+                <label for="html">Image</label><br>
+                <input type="radio" id="video" name="ad-describe" value="video"  [(ngModel)]='adType' class="mt-1 ms-2">
+                <label for="css">Video</label><br>
+            </div>
+            <label for="" class="fw-bold"> Start Time </label>
+            <input type="text" #startTime name="" id="" class="form-control mt-1 " [(ngModel)]='startAd'>
+            <label for="" class="fw-bold"> End Time </label>
+            <input type="text" name="" #endTime id="" class="form-control mt-1 " [(ngModel)]='endAd'>
+           </div> 
+          <div class="d-flex ms-auto mt-2">
+            <button class="btn btn-warning mt-1 ms-auto me-4"  (click)="updateExist(url.value,startTime.value,endTime.value)" >Update</button> 
+            <button class="btn btn-primary mt-1 ms-auto me-4" (click)="add(url.value,startTime.value,endTime.value)" >Add New</button>
+            <button class="btn btn-success mt-1 ms-auto me-4" (click)="clearInput()" >Clear</button>
+          </div>
+          
+              <p *ngIf="error" class="alert alert-danger mt-2">{{error}}</p>
+          
+           
+        </div>
+        <div class="col-md-8 scrollX">
+            <div class="row">
+                <div *ngFor="let ad of ads , index as i"  class="col-md-6">
+                    <div *ngIf="ad.image" class="h">
+                        <img  [src]="ad.image" class="w-100" alt="">
+                    </div>
+                    <div *ngIf="ad.video" class="h" >
+                        <video  controls type="video/mp4" [src]="ad.video" class="w-100"></video>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <div class="d-flex flex-column align-items-center" > 
+                            <p class="fw-bold"> Start Time </p>
+                            <p class="text-muted">{{ad.from_time}}</p>
+                        </div>
+                        <div class="d-flex flex-column align-items-center" > 
+                            <p class="fw-bold"> End Time </p>
+                            <p>{{ad.to_time}}</p>
+                        </div>
+                        
+                    </div>
+                    <div class="d-flex justify-content-around">
+                        <div class="d-flex flex-column align-items-center" > 
+                            <button class="btn btn-warning ms-2" (click)='update(i)' >Update</button>
+                        </div> 
+                        <div class="d-flex flex-column align-items-center" > 
+                            <button class="btn btn-danger me-2" (click)='delete(i)'>Delete</button>
+                        </div> 
+                      
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+        
+    </div>
+</div>

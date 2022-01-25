@@ -1,0 +1,19 @@
+<div class="container ">
+    <div class="row vh-100">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+            <div>
+                <h1> Welcome To Penta Value </h1>
+            </div>
+            <div>
+                <label class="pt-3">Please Enter Phone Number </label>
+            </div>
+            <div>
+                <input type="text" [(ngModel)]='phone' class="form-control mt-2" placeholder="01125932688">
+            </div>
+            <div>
+                <button class="btn btn-success  mt-3" (click)="getCode()"> Get Code </button>
+            </div>
+        </div>
+    </div>
+    <div id="signInBtn"></div>
+</div>
